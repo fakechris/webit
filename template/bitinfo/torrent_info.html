@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+            <title>Your torrent file info</title>
+            
+        </head>
+        <body >
+            <table cellspacing="1" cellpadding="1" border="1">
+                <tr >
+                    <td ><span>file:</span></td>
+                    <td ><span>{{ filename }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>title:</span></td>
+                    <td ><span>{{ title }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>info hash:</span></td>
+                    <td ><span>{{ info_hash }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>total length:</span></td>
+                    <td ><span>
+                            {{ file_length }}<br>
+                            {{ piece_number }} * {{ piece_length }} + {{ last_piece_length }}<br>                            
+                       </span></td>
+                </tr>
+                <tr >
+                    <td ><span>announce:</span></td>
+                    <td ><span>{{ announce }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>annonce list:</span></td>
+                    <td >{% for ann in announce_list %}
+                            {{ ann }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr >
+                    <td ><span>comment:</span></td>
+                    <td ><span>{{ comment }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>creation date:</span></td>
+                    <td ><span>{{ create_date }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>nodes:</span></td>
+                    <td >
+                        {% for node in nodes %}{{ node.ip }}:{{ node.port }}<br>{% endfor %}
+                    </td>
+                </tr>
+                <tr >
+                    <td ><span>url list:</span></td>
+                    <td ><span>{{ url_list }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>file path:</span></td>
+                    <td ><span>{{ path_name }}</span></td>
+                </tr>
+                <tr >
+                    <td ><span>file list:</span></td>
+                    <td >
+                        <table>
+                            <thead><td >name</td><td >length</td><td >content type</td></thead>
+                        {% for f in files %}
+                        <tr><td >{{ f.fname }}</td><td >{{ f.length }}</td><td >{{ f.content_type }}</td></tr>
+                        {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+        </body>
+
+    </html>
