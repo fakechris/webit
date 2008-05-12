@@ -11,7 +11,7 @@ def get_data(request, torrent, index):
     data_path = settings.MEDIA_ROOT + "data/" + torrent + "/"
     sm = StorageManage(torrent_file, data_path)
     r = sm.read(index * sm.metainfo.piece_length, sm.metainfo.piece_length)
-    return HttpResponse(r)
+    return HttpResponse(r, mimetype="application/octet-stream")
     
 
 
